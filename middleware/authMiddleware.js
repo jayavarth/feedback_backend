@@ -7,11 +7,11 @@ const verifyToken = (req, res, next) => {
     return res.status(401).json({ message: "Access Denied" });
   }
 
-  const token = authHeader.split(" ")[1]; // Remove "Bearer" prefix
+  const token = authHeader.split(" ")[1];
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.userId = decoded.id; // or .userId depending on how you sign
+    req.userId = decoded.userId; // ✅ FIXED HERE
     next();
   } catch (err) {
     res.status(401).json({ message: "Invalid token" });
