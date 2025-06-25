@@ -2,7 +2,7 @@ const Post = require("../models/Post");
 
 exports.createPost = async (req, res) => {
   const { image, caption } = req.body;
-  const userId = req.userId; // Comes from middleware
+  const userId = req.userId; 
 
   try {
     const post = new Post({
@@ -19,21 +19,19 @@ exports.createPost = async (req, res) => {
 };
 
 exports.updatePost = async (req, res) => {
-  const { id } = req.params; // postId from URL
+  const { id } = req.params; 
   const { image, caption } = req.body;
-  const userId = req.userId; // From token
+  const userId = req.userId; 
 
   try {
     const post = await Post.findById(id);
 
     if (!post) return res.status(404).json({ message: "Post not found" });
 
-    // Only the post creator can update it
     if (post.userId.toString() !== userId) {
       return res.status(403).json({ message: "Unauthorized to edit this post" });
     }
 
-    // Update fields if provided
     if (image) post.image = image;
     if (caption) post.caption = caption;
 
@@ -54,7 +52,6 @@ exports.deletePost = async (req, res) => {
 
     if (!post) return res.status(404).json({ message: "Post not found" });
 
-    // Ensure the user owns the post
     if (post.userId.toString() !== userId) {
       return res.status(403).json({ message: "Unauthorized to delete this post" });
     }
@@ -70,8 +67,8 @@ exports.deletePost = async (req, res) => {
 exports.getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find()
-      .sort({ createdAt: -1 }) // latest posts first
-      .populate("userId", "email"); // populate user email
+      .sort({ createdAt: -1 }) 
+      .populate("userId", "email"); 
 
     res.status(200).json(posts);
   } catch (err) {

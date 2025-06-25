@@ -13,6 +13,4 @@ router.get("/my-posts", verifyToken, getMyPosts);
 router.post("/feedback/:postId", addFeedback);
 router.get("/my-feedbacks", verifyToken, getMyFeedbacks);
 
-
-
 module.exports = router;
