@@ -1,4 +1,4 @@
-project:
+Project:
 
   name: Feedback Board
   
