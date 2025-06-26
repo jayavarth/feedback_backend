@@ -12,19 +12,19 @@ features:
   - Edit and delete user’s own posts
 
 technologies:
-  frontend:
+  **frontend:
     - React.js
     - CSS
-  backend:
+  **backend:
     - Node.js
     - Express.js
-  database:
+  **database:
     - MongoDB
     - Mongoose
-  authentication:
+  **authentication:
     - JWT
     - bcryptjs
-  others:
+  **others:
     - Axios
     - CORS
 
