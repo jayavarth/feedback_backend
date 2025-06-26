@@ -1,5 +1,7 @@
 project:
+
   name: Feedback Board
+  
   description: 
     FeedbackBoard is a full-stack web application that allows users to express their thoughts
     anonymously and receive feedback from the community. It provides a safe, open platform for
